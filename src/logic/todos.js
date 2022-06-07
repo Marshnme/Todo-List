@@ -1,13 +1,16 @@
-    let todos = []
+let todos = []
+
 function manageTodos(){
     
     let addTodo = function(){
-        todos = [...todos,{title:this.title,desc:this.desc,dueBy:this.dueBy,priority:this.priority,complete:this.complete}]
+        todos = [...todos,this]
         console.log(todos)
-        
     }
+
     let toggleComplete = function(){
+        // add linethrough and grey it out etc
         this.classList.toggle('complete')
+        // current task set complete to true 
     }
 
     // let addTodoToProject = function(){
@@ -41,4 +44,4 @@ function manageTodos(){
     return {title,desc,dueBy,priority,complete,addTodo}
 }
 
-export default Todo
+export {Todo, todos}

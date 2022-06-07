@@ -1,7 +1,11 @@
-import Todo from "./logic/todos";
+import {Todo} from "./logic/todos";
 import Projects from "./logic/projects";
+import todoDisplay from "./components/todoDisplay"
 
-
+let body = document.querySelector("body")
+const contentDiv = document.createElement("div")
+contentDiv.classList.add("content")
+body.appendChild(contentDiv)
 
 let todoOne = Todo("Clean Room","I was gonna grab the broom","tomorrow",5,false)
 todoOne.addTodo()
@@ -31,3 +35,6 @@ console.log(todoThree)
     // factory to create todos
     // factory to create projects
     // 
+
+
+    todoDisplay()
