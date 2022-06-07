@@ -1,7 +1,7 @@
 import {Todo,todos} from "../logic/todos"
 import "./todos.css"
 
-const todoDisplay = () => {
+const tasksDisplay = () => {
     const contentDiv = document.querySelector(".content")
 
     let todoContainer = document.createElement("div")
@@ -24,4 +24,4 @@ const todoDisplay = () => {
     })
 }
 
-export default todoDisplay
+export default tasksDisplay

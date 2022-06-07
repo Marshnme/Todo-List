@@ -1,7 +1,7 @@
 import sideNav from "./components/sideNav"
 import {Todo} from "./logic/todos";
 import Projects from "./logic/projects";
-import todoDisplay from "./components/todoDisplay"
+import tasksDisplay from "./components/tasksDisplay"
 
 
 let body = document.querySelector("body")
@@ -41,7 +41,7 @@ console.log(todoThree)
 
     const renderDisplays = () =>{
         sideNav()
-        todoDisplay()
+        tasksDisplay()
     }
     
     renderDisplays()
