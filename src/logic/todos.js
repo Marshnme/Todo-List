@@ -44,4 +44,4 @@ function manageTodos(){
     return {title,desc,dueBy,priority,complete,addTodo}
 }
 
-export {Todo, todos}
+export {Todo, manageTodos,todos}

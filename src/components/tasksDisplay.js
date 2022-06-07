@@ -1,7 +1,11 @@
 import {Todo,todos} from "../logic/todos"
-import "./todos.css"
+import "./tasks.css"
+import taskUtility from "./taskUtilityBar"
 
 const tasksDisplay = () => {
+
+    taskUtility()
+
     const contentDiv = document.querySelector(".content")
 
     let todoContainer = document.createElement("div")

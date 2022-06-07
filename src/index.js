@@ -2,6 +2,7 @@ import sideNav from "./components/sideNav"
 import {Todo} from "./logic/todos";
 import Projects from "./logic/projects";
 import tasksDisplay from "./components/tasksDisplay"
+import addTaskForm from "./components/addTaskForm";
 
 
 let body = document.querySelector("body")
@@ -33,7 +34,7 @@ console.log(todoThree)
     
 
 // SOFTWARE DESIGN
-    // Module to show interface 
+    // Modules to show interface 
     // factory to create todos
     // factory to create projects
     // 
@@ -42,6 +43,7 @@ console.log(todoThree)
     const renderDisplays = () =>{
         sideNav()
         tasksDisplay()
+        addTaskForm()
     }
     
     renderDisplays()
