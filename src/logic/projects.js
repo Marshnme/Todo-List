@@ -14,6 +14,11 @@
         this.classList.toggle('complete')
     }
 
+    // let addTodoProject = function(){
+    //     // click on project 
+    //     // brings up todos
+    // }
+
     let deleteProject = function(){
         if(projects.length === 0){
             return
@@ -21,7 +26,7 @@
             let updatedProjects = projects.filter((project) => {
                 // project.id === e.target.id
             })
-            projects = updatedProjects;
+            // projects = updatedProjects;
         }
     }
     return {addProject,toggleComplete,deleteProject}

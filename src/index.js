@@ -1,3 +1,19 @@
+import Todo from "./logic/todos";
+import Projects from "./logic/projects";
+
+
+
+let todoOne = Todo("Clean Room","I was gonna grab the broom","tomorrow",5,false)
+todoOne.addTodo()
+console.log(todoOne)
+
+let todoTwo = Todo("code","I was gonna grab the computer","todaymorrow",1,false)
+todoTwo.addTodo()
+console.log(todoTwo)
+
+let todoThree = Todo("work","work","work",1,false)
+todoThree.addTodo()
+console.log(todoThree)
 // todo
     // single page app
     // home screen will have inputs for adding todos and projects that will hold todos. Choose which project your todo goes into
