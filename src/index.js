@@ -1,6 +1,8 @@
+import sideNav from "./components/sideNav"
 import {Todo} from "./logic/todos";
 import Projects from "./logic/projects";
 import todoDisplay from "./components/todoDisplay"
+
 
 let body = document.querySelector("body")
 const contentDiv = document.createElement("div")
@@ -37,4 +39,9 @@ console.log(todoThree)
     // 
 
 
-    todoDisplay()
+    const renderDisplays = () =>{
+        sideNav()
+        todoDisplay()
+    }
+    
+    renderDisplays()
