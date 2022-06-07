@@ -7,3 +7,11 @@
     // interface should be able to view all projects,view all todays in each project,expand a single todo to see/edit its details,and delete a todo.
     // checkout date-fns package 
     // use local storage to keep the session of the user
+
+    
+
+// SOFTWARE DESIGN
+    // Module to show interface 
+    // factory to create todos
+    // factory to create projects
+    // 
