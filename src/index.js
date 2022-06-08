@@ -34,12 +34,6 @@ todoThree.addTodo()
 
     
 
-// SOFTWARE DESIGN
-    // Modules to show interface 
-    // factory to create todos
-    // factory to create projects
-    // 
-
 
     const renderDisplays = () =>{
         sideNav()

@@ -1,16 +1,21 @@
 
 /* task Item(s) */
 
-.delete-icon {
-    text-decoration: none;
-}
+
 .task-completed{
     text-decoration: line-through;
     color:black;
     background-color: grey;
 }
 
+.task-completed-background{
+background-color: grey;
+}
 
+
+.delete-icon {
+    text-decoration: none;
+}
 
 /* .todo *{
     pointer-events: none;

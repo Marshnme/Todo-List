@@ -27,7 +27,9 @@ function manageTodos(){
             todoItem.classList.add(`todo`,`todo-${todo.id}`)
             if(todo.complete === true){
                 console.log("IM CHECKED")
-                todoItem.classList.toggle("task-completed")
+                todoItem.classList.toggle("task-completed-background")
+                todoTitle.classList.toggle("task-completed")
+                todoDueBy.classList.toggle("task-completed")
             }
             todoTitle.textContent=`${todo.title}`
             todoDueBy.textContent=`${todo.dueBy}`
@@ -45,12 +47,15 @@ function manageTodos(){
     }
 
     let toggleComplete = function(e){
-    
-        for(let i =0; i<todos.length; i++){
+        console.log(e)
+        for(let i = 0; i<todos.length; i++){
             let split = e.target.classList[1].split("")
             let lastChar = split.length - 1
             if(todos[i].id === parseInt(split[lastChar])){
-                this.classList.toggle('task-completed')
+                e.target.classList.toggle("task-completed-background")
+                e.target.children[0].classList.toggle('task-completed')
+                e.target.children[0].nextSibling.classList.toggle('task-completed')
+                
                 todos[i].complete ? todos[i].complete = false : todos[i].complete = true
             }else{
                 console.log("nowork")
