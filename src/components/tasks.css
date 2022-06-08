@@ -6,16 +6,16 @@
     background-color: grey;
 }
 
-.todo *{
+/* .todo *{
     pointer-events: none;
-}
+} */
 
 
 
 /* add task form */
 
 .add-task-form{
-    color:green;
+    /* color:green; */
 }
 
 .task-form-hidden{

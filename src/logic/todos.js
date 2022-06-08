@@ -21,6 +21,7 @@ function manageTodos(){
             let todoItem = document.createElement("div")  
             let todoTitle = document.createElement("h2")
             let todoDueBy = document.createElement("p")
+            let todoDelete = document.createElement("p")
             
             todoItem.classList.add(`todo`,`todo-${todo.id}`)
             if(todo.complete === true){
@@ -29,12 +30,14 @@ function manageTodos(){
             }
             todoTitle.textContent=`${todo.title}`
             todoDueBy.textContent=`${todo.dueBy}`
+            todoDelete.textContent="DELETE"
             todoItem.addEventListener("click",toggleComplete)
-            
+            todoDelete.addEventListener("click",deleteTodo)
     
             todoContainer.appendChild(todoItem)
             todoItem.appendChild(todoTitle)
             todoItem.appendChild(todoDueBy)
+            todoItem.appendChild(todoDelete)
         }) 
         
         contentDiv.appendChild(todoContainer)
@@ -56,14 +59,27 @@ function manageTodos(){
     }
 
 
-    let deleteTodo = function(){
+    let deleteTodo = function(e){
+        console.log("deleteme okz")
+        e.stopPropagation()
+        console.log(e)
         if(todos.length === 0){
             return
         }else{
+            let parentId = e.target.parentElement.classList[1].split("")
+            console.log(parentId)
+            let IdLastChar = parentId.length-1
+            
             let updatedTodos = todos.filter((todo) => {
-                // todo.id === e.target.id
+                console.log(parentId[IdLastChar])
+            console.log(todo.id)
+               if( todo.id != parentId[IdLastChar]){
+                   return todo
+               }
             })
-            // todos = updatedTodos;
+            console.log(updatedTodos)
+            todos = updatedTodos;
+            refreshTaskList()
         }
     }
     return {addTodo,toggleComplete,deleteTodo,refreshTaskList}
