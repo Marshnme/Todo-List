@@ -71,7 +71,7 @@ function manageTodos(){
             }else{
                 console.log("nowork")
             }
-            // saveTasksInLocalStorage()
+            saveTasksInLocalStorage()
         }
         console.log(todos)
         
