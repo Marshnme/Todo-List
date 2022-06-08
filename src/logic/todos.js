@@ -22,6 +22,7 @@ function manageTodos(){
             let todoTitle = document.createElement("h2")
             let todoDueBy = document.createElement("p")
             let todoDelete = document.createElement("p")
+            todoDelete.classList.add("delete-icon")
             
             todoItem.classList.add(`todo`,`todo-${todo.id}`)
             if(todo.complete === true){
@@ -77,7 +78,6 @@ function manageTodos(){
                    return todo
                }
             })
-            console.log(updatedTodos)
             todos = updatedTodos;
             refreshTaskList()
         }
