@@ -44,8 +44,9 @@ body.appendChild(contentDiv)
 
     const renderDisplays = () =>{
         sideNav()
-        tasksDisplay()
         addTaskForm()
+        tasksDisplay()
+        
     }
     
     renderDisplays()

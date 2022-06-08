@@ -1,6 +1,7 @@
 
 import { manageTodos,Todo } from "../logic/todos"
 import tasksDisplay from "./tasksDisplay"
+import "./tasks.css"
 const addTaskForm = () => {
 
     let {refreshTaskList} = manageTodos()
@@ -8,7 +9,7 @@ const addTaskForm = () => {
 
     // Creating form elements and adding content
     let taskForm = document.createElement("form")
-    taskForm.classList.add("add-task-form")
+    taskForm.classList.add("add-task-form","task-form-hidden")
     let titleLabel = document.createElement("label")
     titleLabel.setAttribute("for","title") 
     titleLabel.textContent = "Task Title:"
@@ -31,6 +32,7 @@ const addTaskForm = () => {
     priorityInput.type = "range"
     priorityInput.id = "priority"
     priorityInput.name="priority"
+    priorityInput.setAttribute("value","1")
     priorityInput.setAttribute("min","1")
     priorityInput.setAttribute("max","5")
     let dueByLabel = document.createElement("label")
@@ -65,13 +67,24 @@ const addTaskForm = () => {
     taskForm.appendChild(submitButton)
     contentDiv.appendChild(taskForm)
 
-    function createTodo(e){
+    function createTask(e){
         let task = Todo(`${titleInput.value}`,`${descInput.value}`,`${dueByInput.value}`,`${priorityInput.value}`,`${completeInput.checked}`);
         task.addTodo(e)
         refreshTaskList()
+        clearForm()
+
     }
 
-    submitButton.addEventListener("click",createTodo)
+    function clearForm(){
+        taskForm.classList.toggle("task-form-hidden")
+        titleInput.value = ''
+        descInput.value=''
+        dueByInput.value=''
+        priorityInput.value = 1
+        completeInput.checked = false
+    }
+
+    submitButton.addEventListener("click",createTask)
 }
 
 export default addTaskForm
