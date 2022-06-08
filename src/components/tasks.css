@@ -6,6 +6,10 @@
     background-color: grey;
 }
 
+.todo *{
+    pointer-events: none;
+}
+
 
 
 /* add task form */

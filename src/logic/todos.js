@@ -45,17 +45,14 @@ function manageTodos(){
         for(let i =0; i<todos.length; i++){
             let split = e.target.classList[1].split("")
             let lastChar = split.length - 1
-            console.log(lastChar)
             if(todos[i].id === parseInt(split[lastChar])){
                 this.classList.toggle('task-completed')
                 todos[i].complete ? todos[i].complete = false : todos[i].complete = true
             }else{
                 console.log("nowork")
-                console.log(todos[i].id)
-                console.log(lastChar)
             }
-            console.log(todos)
         }
+        console.log(todos)
     }
 
 
