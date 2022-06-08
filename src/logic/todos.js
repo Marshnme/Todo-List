@@ -7,25 +7,26 @@ function manageTodos(){
             e.preventDefault()
         }
         this.id = ID
-        console.log(this)
         todos = [...todos,this]
         console.log(todos)
         ID++
     }
 
     let refreshTaskList = function(){
-        
         const contentDiv = document.querySelector(".content")
         let todoContainer = document.querySelector(".todo-container")
         todoContainer.replaceChildren()
        
-        
         todos.map(todo => {
             let todoItem = document.createElement("div")  
             let todoTitle = document.createElement("h2")
             let todoDueBy = document.createElement("p")
-            console.log(todo)
+            
             todoItem.classList.add(`todo`,`todo-${todo.id}`)
+            if(todo.complete === true){
+                console.log("IM CHECKED")
+                todoItem.classList.toggle("task-completed")
+            }
             todoTitle.textContent=`${todo.title}`
             todoDueBy.textContent=`${todo.dueBy}`
             todoItem.addEventListener("click",toggleComplete)
@@ -40,9 +41,7 @@ function manageTodos(){
     }
 
     let toggleComplete = function(e){
-        console.log(e)
-        
-
+    
         for(let i =0; i<todos.length; i++){
             let split = e.target.classList[1].split("")
             let lastChar = split.length - 1
