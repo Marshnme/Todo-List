@@ -11,14 +11,14 @@ const contentDiv = document.createElement("div")
 contentDiv.classList.add("content")
 body.appendChild(contentDiv)
 
-let todoOne = Todo("Clean Room","I was gonna grab the broom","tomorrow",5,true)
-todoOne.addTodo()
+// let todoOne = Todo("Clean Room","I was gonna grab the broom","tomorrow",5,true)
+// todoOne.addTodo()
 
-let todoTwo = Todo("code","I was gonna grab the computer","todaymorrow",1,false)
-todoTwo.addTodo()
+// let todoTwo = Todo("code","I was gonna grab the computer","todaymorrow",1,false)
+// todoTwo.addTodo()
 
-let todoThree = Todo("work","work","work",1,false)
-todoThree.addTodo()
+// let todoThree = Todo("work","work","work",1,false)
+// todoThree.addTodo()
 
 // todo
 

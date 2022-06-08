@@ -9,15 +9,26 @@ function manageTodos(){
         this.id = ID
         todos = [...todos,this]
         console.log(todos)
+        saveTasksInLocalStorage()
         ID++
     }
 
+    let saveTasksInLocalStorage = function(){
+        window.localStorage.setItem("tasks",JSON.stringify(todos))
+    }
+    let getTasksFromLocalStorage = function(){
+        let savedTasks = JSON.parse(window.localStorage.getItem("tasks"))
+        todos = savedTasks
+    }
+
     let refreshTaskList = function(){
+        getTasksFromLocalStorage()
         const contentDiv = document.querySelector(".content")
         let todoContainer = document.querySelector(".todo-container")
         todoContainer.replaceChildren()
        
         todos.map(todo => {
+            console.log(todo)
             let todoItem = document.createElement("div")  
             let todoTitle = document.createElement("h2")
             let todoDueBy = document.createElement("p")
@@ -25,7 +36,7 @@ function manageTodos(){
             todoDelete.classList.add("delete-icon")
             
             todoItem.classList.add(`todo`,`todo-${todo.id}`)
-            if(todo.complete === true){
+            if(todo.complete === true || todo.complete === "true"){
                 console.log("IM CHECKED")
                 todoItem.classList.toggle("task-completed-background")
                 todoTitle.classList.toggle("task-completed")
@@ -60,8 +71,10 @@ function manageTodos(){
             }else{
                 console.log("nowork")
             }
+            // saveTasksInLocalStorage()
         }
         console.log(todos)
+        
     }
 
 
@@ -84,6 +97,7 @@ function manageTodos(){
                }
             })
             todos = updatedTodos;
+            saveTasksInLocalStorage()
             refreshTaskList()
         }
     }
