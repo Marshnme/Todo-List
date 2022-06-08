@@ -2,6 +2,8 @@
 /* task Item(s) */
 .task-completed{
     text-decoration: line-through;
+    color:black;
+    background-color: grey;
 }
 
 

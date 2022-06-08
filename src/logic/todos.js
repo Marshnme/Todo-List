@@ -17,12 +17,14 @@ function manageTodos(){
         
         const contentDiv = document.querySelector(".content")
         let todoContainer = document.querySelector(".todo-container")
+        todoContainer.replaceChildren()
+       
         
-        let todoItem = document.createElement("div")
-        let todoTitle = document.createElement("h2")
-        let todoDueBy = document.createElement("p")
         todos.map(todo => {
-            
+            let todoItem = document.createElement("div")  
+            let todoTitle = document.createElement("h2")
+            let todoDueBy = document.createElement("p")
+            console.log(todo)
             todoItem.classList.add(`todo`,`todo-${todo.id}`)
             todoTitle.textContent=`${todo.title}`
             todoDueBy.textContent=`${todo.dueBy}`
@@ -32,17 +34,13 @@ function manageTodos(){
             todoContainer.appendChild(todoItem)
             todoItem.appendChild(todoTitle)
             todoItem.appendChild(todoDueBy)
-            
+        }) 
         
-        })
         contentDiv.appendChild(todoContainer)
     }
 
     let toggleComplete = function(e){
         console.log(e)
-        
-        let allTaskItems = document.querySelectorAll(".todo")
-        let allTasksToArray = [...allTaskItems]
         
 
         for(let i =0; i<todos.length; i++){
@@ -59,14 +57,8 @@ function manageTodos(){
             }
             console.log(todos)
         }
-        // add linethrough and grey it out etc
-        
-        // current task set complete to true 
     }
 
-    // let addTodoToProject = function(){
-        
-    // }
 
     let deleteTodo = function(){
         if(todos.length === 0){
