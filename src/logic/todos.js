@@ -2,9 +2,37 @@ let todos = []
 
 function manageTodos(){
     
-    let addTodo = function(){
+    let addTodo = function(e){
+        if(e){
+            e.preventDefault()
+        }
+        console.log(this)
         todos = [...todos,this]
         console.log(todos)
+    }
+
+    let refreshTaskList = function(){
+        
+        const contentDiv = document.querySelector(".content")
+        let todoContainer = document.querySelector(".todo-container")
+        
+        let todoItem = document.createElement("div")
+        let todoTitle = document.createElement("h2")
+        let todoDueBy = document.createElement("p")
+        todos.map(todo => {
+            
+            todoItem.classList.add(`todo`,`todo-}`)
+            todoTitle.textContent=`${todo.title}`
+            todoDueBy.textContent=`${todo.dueBy}`
+            
+    
+            todoContainer.appendChild(todoItem)
+            todoItem.appendChild(todoTitle)
+            todoItem.appendChild(todoDueBy)
+            
+        
+        })
+        contentDiv.appendChild(todoContainer)
     }
 
     let toggleComplete = function(){
@@ -27,10 +55,10 @@ function manageTodos(){
             // todos = updatedTodos;
         }
     }
-    return {addTodo,toggleComplete,deleteTodo}
+    return {addTodo,toggleComplete,deleteTodo,refreshTaskList}
 }
 
-
+// Todo Factory
  function Todo(title,desc,dueBy,priority,complete){
     
         title,
@@ -44,4 +72,4 @@ function manageTodos(){
     return {title,desc,dueBy,priority,complete,addTodo}
 }
 
-export {Todo, manageTodos,todos}
+export {Todo, manageTodos,todos,}

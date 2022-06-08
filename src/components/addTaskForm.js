@@ -1,14 +1,19 @@
 
-
+import { manageTodos,Todo } from "../logic/todos"
+import tasksDisplay from "./tasksDisplay"
 const addTaskForm = () => {
+
+    let {refreshTaskList} = manageTodos()
     const contentDiv = document.querySelector(".content")
 
+    // Creating form elements and adding content
     let taskForm = document.createElement("form")
     taskForm.classList.add("add-task-form")
     let titleLabel = document.createElement("label")
     titleLabel.setAttribute("for","title") 
     titleLabel.textContent = "Task Title:"
     let titleInput = document.createElement("input")
+    titleInput.required = true;
     titleInput.type = "text"
     titleInput.id = "title"
     titleInput.name="title"
@@ -26,8 +31,8 @@ const addTaskForm = () => {
     priorityInput.type = "range"
     priorityInput.id = "priority"
     priorityInput.name="priority"
-    priorityLabel.setAttribute("min","1")
-    priorityLabel.setAttribute("max","5")
+    priorityInput.setAttribute("min","1")
+    priorityInput.setAttribute("max","5")
     let dueByLabel = document.createElement("label")
     dueByLabel.setAttribute("for","dueBy") 
     dueByLabel.textContent = "Task DueDate:"
@@ -46,6 +51,7 @@ const addTaskForm = () => {
     submitButton.classList.add("submit-task-button")
     submitButton.textContent = "Submit Task"
 
+    // appending form elements and form
     taskForm.appendChild(titleLabel)
     taskForm.appendChild(titleInput)
     taskForm.appendChild(descLabel)
@@ -58,6 +64,14 @@ const addTaskForm = () => {
     taskForm.appendChild(completeInput)
     taskForm.appendChild(submitButton)
     contentDiv.appendChild(taskForm)
+
+    function createTodo(e){
+        let task = Todo(`${titleInput.value}`,`${descInput.value}`,`${dueByInput.value}`,`${priorityInput.value}`,`${completeInput.checked}`);
+        task.addTodo(e)
+        refreshTaskList()
+    }
+
+    submitButton.addEventListener("click",createTodo)
 }
 
 export default addTaskForm
