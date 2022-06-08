@@ -1,26 +1,28 @@
 import sideNav from "./components/sideNav"
-import {Todo} from "./logic/todos";
+import {Todo,manageTodos} from "./logic/todos";
 import Projects from "./logic/projects";
 import tasksDisplay from "./components/tasksDisplay"
 import addTaskForm from "./components/addTaskForm";
 
+let {refreshTaskList} = manageTodos()
 
 let body = document.querySelector("body")
 const contentDiv = document.createElement("div")
 contentDiv.classList.add("content")
 body.appendChild(contentDiv)
 
-// let todoOne = Todo("Clean Room","I was gonna grab the broom","tomorrow",5,false)
-// todoOne.addTodo()
-// console.log(todoOne)
+let todoOne = Todo("Clean Room","I was gonna grab the broom","tomorrow",5,false)
+todoOne.addTodo()
+console.log(todoOne)
 
-// let todoTwo = Todo("code","I was gonna grab the computer","todaymorrow",1,false)
-// todoTwo.addTodo()
-// console.log(todoTwo)
+let todoTwo = Todo("code","I was gonna grab the computer","todaymorrow",1,false)
+todoTwo.addTodo()
+console.log(todoTwo)
 
-// let todoThree = Todo("work","work","work",1,false)
-// todoThree.addTodo()
-// console.log(todoThree)
+let todoThree = Todo("work","work","work",1,false)
+todoThree.addTodo()
+console.log(todoThree)
+
 // todo
 
 

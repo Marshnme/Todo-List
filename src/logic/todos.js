@@ -1,14 +1,16 @@
 let todos = []
-
+let ID = 0
 function manageTodos(){
     
     let addTodo = function(e){
         if(e){
             e.preventDefault()
         }
+        this.id = ID
         console.log(this)
         todos = [...todos,this]
         console.log(todos)
+        ID++
     }
 
     let refreshTaskList = function(){
@@ -21,9 +23,10 @@ function manageTodos(){
         let todoDueBy = document.createElement("p")
         todos.map(todo => {
             
-            todoItem.classList.add(`todo`,`todo-}`)
+            todoItem.classList.add(`todo`,`todo-${todo.id}`)
             todoTitle.textContent=`${todo.title}`
             todoDueBy.textContent=`${todo.dueBy}`
+            todoItem.addEventListener("click",toggleComplete)
             
     
             todoContainer.appendChild(todoItem)
@@ -35,9 +38,29 @@ function manageTodos(){
         contentDiv.appendChild(todoContainer)
     }
 
-    let toggleComplete = function(){
+    let toggleComplete = function(e){
+        console.log(e)
+        
+        let allTaskItems = document.querySelectorAll(".todo")
+        let allTasksToArray = [...allTaskItems]
+        
+
+        for(let i =0; i<todos.length; i++){
+            let split = e.target.classList[1].split("")
+            let lastChar = split.length - 1
+            console.log(lastChar)
+            if(todos[i].id === parseInt(split[lastChar])){
+                this.classList.toggle('task-completed')
+                todos[i].complete ? todos[i].complete = false : todos[i].complete = true
+            }else{
+                console.log("nowork")
+                console.log(todos[i].id)
+                console.log(lastChar)
+            }
+            console.log(todos)
+        }
         // add linethrough and grey it out etc
-        this.classList.toggle('complete')
+        
         // current task set complete to true 
     }
 
@@ -60,13 +83,13 @@ function manageTodos(){
 
 // Todo Factory
  function Todo(title,desc,dueBy,priority,complete){
-    
+
         title,
         desc,
         dueBy,
         priority,
         complete
-    
+
     let {addTodo} = manageTodos();
     
     return {title,desc,dueBy,priority,complete,addTodo}
