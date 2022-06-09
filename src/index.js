@@ -2,6 +2,7 @@ import sideNav from "./components/sideNav"
 import {Todo,manageTodos} from "./logic/todos";
 import Projects from "./logic/projects";
 import tasksDisplay from "./components/tasksDisplay"
+import projectsDisplay from "./components/projectsDisplay";
 import addTaskForm from "./components/addTaskForm";
 import "./index.css"
 
@@ -11,6 +12,8 @@ let body = document.querySelector("body")
 const contentDiv = document.createElement("div")
 contentDiv.classList.add("content")
 body.appendChild(contentDiv)
+
+
 
 // let todoOne = Todo("Clean Room","I was gonna grab the broom","tomorrow",5,true)
 // todoOne.addTodo()
@@ -45,3 +48,23 @@ body.appendChild(contentDiv)
     }
     
     renderDisplays()
+    function renderTasks(){
+        console.log("tASK BE RENDER")
+        
+        let projectContainer = document.querySelector(".project-container")
+        contentDiv.removeChild(projectContainer)
+        tasksDisplay()
+    }
+    function renderProjects(){
+        let todoContainer = document.querySelector(".todo-container")
+        console.log("PROJECT BE RENDER")
+        contentDiv.removeChild(todoContainer)
+        projectsDisplay()
+    }
+    let taskTab = document.querySelector(".nav-tasks")
+    let projectTab = document.querySelector(".nav-projects")
+
+console.log(taskTab,projectTab)
+
+    taskTab.addEventListener("click",renderTasks)
+    projectTab.addEventListener("click",renderProjects)
