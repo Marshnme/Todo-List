@@ -9,20 +9,33 @@ function manageTodos(){
         this.id = ID
         todos = [...todos,this]
         console.log(todos)
-        saveTasksInLocalStorage()
         ID++
+        saveTasksInLocalStorage()
+        
     }
 
     let saveTasksInLocalStorage = function(){
         window.localStorage.setItem("tasks",JSON.stringify(todos))
+        window.localStorage.setItem("id",ID)
     }
     let getTasksFromLocalStorage = function(){
         let savedTasks = JSON.parse(window.localStorage.getItem("tasks"))
+        let savedID = window.localStorage.getItem("id")
         todos = savedTasks
+        if(todos.length === 0 ){
+            ID = 0
+        }else{
+        
+            ID = parseInt(savedID)
+        }
+        
     }
 
     let refreshTaskList = function(){
         getTasksFromLocalStorage()
+        if(!todos){
+            return
+        }
         const contentDiv = document.querySelector(".content")
         let todoContainer = document.querySelector(".todo-container")
         todoContainer.replaceChildren()
@@ -39,10 +52,14 @@ function manageTodos(){
             
             taskItem.classList.add(`todo`,`todo-${todo.id}`)
             if(todo.complete === true || todo.complete === "true"){
-                console.log("IM CHECKED")
-                taskItem.classList.toggle("task-completed-background")
-                taskTitle.classList.toggle("task-completed")
-                taskDueBy.classList.toggle("task-completed")
+                console.log("IM COMPLETE")
+                taskItem.classList.add("task-completed-background")
+                taskDetails.classList.add("task-completed")
+                // taskDueBy.classList.toggle("task-completed")
+            }else{
+                console.log("i am not completed")
+                taskItem.classList.remove("task-completed-background")
+                taskDetails.classList.remove("task-completed")
             }
             taskTitle.textContent=`${todo.title}`
             taskDueBy.textContent=`${todo.dueBy}`
@@ -66,11 +83,20 @@ function manageTodos(){
         for(let i = 0; i<todos.length; i++){
             let split = e.target.classList[1].split("")
             let lastChar = split.length - 1
-            if(todos[i].id === parseInt(split[lastChar])){
-                e.target.classList.toggle("task-completed-background")
-                e.target.children[0].classList.toggle('task-completed')
+            if(todos[i].id=== parseInt(split[lastChar])){
+                if(todos[i].complete === "true" || todos[i].complete === true){
+                    
+                    e.target.classList.remove("task-completed-background")
+                    e.target.children[0].classList.remove('task-completed')
+                    todos[i].complete = false;
+                }else if(todos[i].complete === "false" || todos[i].complete === false){
+                    e.target.classList.add("task-completed-background")
+                    e.target.children[0].classList.add('task-completed')
+                    todos[i].complete = true;
+                }
+               
                 
-                todos[i].complete ? todos[i].complete = false : todos[i].complete = true
+                // todos[i].complete ? todos[i].complete = false : todos[i].complete = true
             }else{
                 console.log("nowork")
             }
@@ -82,7 +108,6 @@ function manageTodos(){
 
 
     let deleteTodo = function(e){
-        console.log("deleteme okz")
         e.stopPropagation()
         console.log(e)
         if(todos.length === 0){
@@ -117,7 +142,7 @@ function manageTodos(){
         complete
 
     let {addTodo} = manageTodos();
-    
+
     return {title,desc,dueBy,priority,complete,addTodo}
 }
 
