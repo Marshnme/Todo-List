@@ -29,35 +29,39 @@ function manageTodos(){
        
         todos.map(todo => {
             console.log(todo)
-            let todoItem = document.createElement("div")  
-            let todoTitle = document.createElement("h2")
-            let todoDueBy = document.createElement("p")
-            let todoDelete = document.createElement("p")
-            todoDelete.classList.add("delete-icon")
+            let taskDetails = document.createElement("div")
+            taskDetails.classList.add("task-details")
+            let taskItem = document.createElement("div")  
+            let taskTitle = document.createElement("h2")
+            let taskDueBy = document.createElement("p")
+            let taskDelete = document.createElement("p")
+            taskDelete.classList.add("delete-icon")
             
-            todoItem.classList.add(`todo`,`todo-${todo.id}`)
+            taskItem.classList.add(`todo`,`todo-${todo.id}`)
             if(todo.complete === true || todo.complete === "true"){
                 console.log("IM CHECKED")
-                todoItem.classList.toggle("task-completed-background")
-                todoTitle.classList.toggle("task-completed")
-                todoDueBy.classList.toggle("task-completed")
+                taskItem.classList.toggle("task-completed-background")
+                taskTitle.classList.toggle("task-completed")
+                taskDueBy.classList.toggle("task-completed")
             }
-            todoTitle.textContent=`${todo.title}`
-            todoDueBy.textContent=`${todo.dueBy}`
-            todoDelete.textContent="DELETE"
-            todoItem.addEventListener("click",toggleComplete)
-            todoDelete.addEventListener("click",deleteTodo)
+            taskTitle.textContent=`${todo.title}`
+            taskDueBy.textContent=`${todo.dueBy}`
+            taskDelete.textContent="DELETE"
+            taskItem.addEventListener("click",toggleComplete)
+            taskDelete.addEventListener("click",deleteTodo)
     
-            todoContainer.appendChild(todoItem)
-            todoItem.appendChild(todoTitle)
-            todoItem.appendChild(todoDueBy)
-            todoItem.appendChild(todoDelete)
+            todoContainer.appendChild(taskItem)
+            taskItem.appendChild(taskDetails)
+            taskDetails.appendChild(taskTitle)
+            taskDetails.appendChild(taskDueBy)
+            taskItem.appendChild(taskDelete)
         }) 
         
         contentDiv.appendChild(todoContainer)
     }
 
     let toggleComplete = function(e){
+        e.stopPropagation()
         console.log(e)
         for(let i = 0; i<todos.length; i++){
             let split = e.target.classList[1].split("")
@@ -65,7 +69,6 @@ function manageTodos(){
             if(todos[i].id === parseInt(split[lastChar])){
                 e.target.classList.toggle("task-completed-background")
                 e.target.children[0].classList.toggle('task-completed')
-                e.target.children[0].nextSibling.classList.toggle('task-completed')
                 
                 todos[i].complete ? todos[i].complete = false : todos[i].complete = true
             }else{
