@@ -2,8 +2,9 @@
 import { manageTodos,Todo } from "../logic/todos"
 import tasksDisplay from "./tasksDisplay"
 import "./tasks.css"
-const addTaskForm = () => {
 
+const addTaskForm = () => {
+console.log("work???")
     let {refreshTaskList} = manageTodos()
     const contentDiv = document.querySelector(".content")
 

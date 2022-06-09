@@ -3,6 +3,7 @@ import {Todo,manageTodos} from "./logic/todos";
 import Projects from "./logic/projects";
 import tasksDisplay from "./components/tasksDisplay"
 import addTaskForm from "./components/addTaskForm";
+import "./index.css"
 
 let {refreshTaskList} = manageTodos()
 
@@ -36,8 +37,9 @@ body.appendChild(contentDiv)
 
 
     const renderDisplays = () =>{
-        sideNav()
         addTaskForm()
+        sideNav()
+        
         tasksDisplay()
         
     }

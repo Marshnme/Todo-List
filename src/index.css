@@ -1,0 +1,12 @@
+.content{
+    display:grid;
+
+}
+
+.sidebar{
+    width:70%;
+    display:flex;
+    justify-content: center;
+    gap: 10%;
+    margin:0 auto;
+}

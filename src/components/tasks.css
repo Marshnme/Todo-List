@@ -15,11 +15,13 @@ background-color: grey;
 
 .delete-icon {
     text-decoration: none;
+    align-self: center;
 }
 
-/* .todo *{
-    pointer-events: none;
-} */
+.todo{
+    display:flex;
+}
+
 
 
 
