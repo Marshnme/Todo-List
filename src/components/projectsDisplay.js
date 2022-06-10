@@ -3,6 +3,13 @@ import {manageProjects} from "../logic/projects"
 const projectsDisplay = () => {
     let {refreshProjects} = manageProjects()
     let removeIcon = document.querySelector(".add-icon")
+
+    let updateFormIcon = () => {
+
+    }
+
+    removeIcon.addEventListener("click",updateFormIcon)
+    
     const contentDiv = document.querySelector(".content")
 
     let projectContainer = document.createElement("div")
