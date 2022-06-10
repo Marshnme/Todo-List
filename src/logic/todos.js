@@ -42,9 +42,10 @@ function manageTodos(){
        
         todos.map(todo => {
             console.log(todo)
+            let taskItem = document.createElement("div") 
             let taskDetails = document.createElement("div")
             taskDetails.classList.add("task-details")
-            let taskItem = document.createElement("div")  
+             
             let taskTitle = document.createElement("h2")
             let taskDueBy = document.createElement("p")
             let taskDelete = document.createElement("p")

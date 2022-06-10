@@ -15,7 +15,7 @@ const sideNav = () => {
     projectLink.classList.add("nav-projects")
     
     let addIcon = document.createElement("p")
-    addIcon.classList.add("addIcon")
+    addIcon.classList.add("add-icon")
     addIcon.textContent = "+";
 
     sideBar.appendChild(taskLink)

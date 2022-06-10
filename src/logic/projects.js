@@ -17,9 +17,10 @@
         projectContainer.replaceChildren()
 
         projects.map(project => {
+            let projectItem = document.createElement("div")  
             let projectDetails = document.createElement("div")
             projectDetails.classList.add("project-details")
-            let projectItem = document.createElement("div")  
+            
             let projectTitle = document.createElement("h2")
             let projectDueBy = document.createElement("p")
             let projectDelete = document.createElement("p")
@@ -50,7 +51,7 @@
             projectDetails.appendChild(projectDueBy)
             projectItem.appendChild(projectDelete)
         })
-        contentDiv.appendChild(todoContainer)
+        contentDiv.appendChild(projectContainer)
     }
 
     let toggleComplete = function(){

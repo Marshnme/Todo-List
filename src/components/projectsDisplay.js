@@ -2,6 +2,7 @@ import {manageProjects} from "../logic/projects"
 
 const projectsDisplay = () => {
     let {refreshProjects} = manageProjects()
+    let removeIcon = document.querySelector(".add-icon")
     const contentDiv = document.querySelector(".content")
 
     let projectContainer = document.createElement("div")
