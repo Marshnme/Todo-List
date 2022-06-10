@@ -20,14 +20,20 @@ function manageTodos(){
     }
     let getTasksFromLocalStorage = function(){
         let savedTasks = JSON.parse(window.localStorage.getItem("tasks"))
-        let savedID = window.localStorage.getItem("id")
-        todos = savedTasks
-        if(todos.length === 0 ){
-            ID = 0
+
+        if(savedTasks != null){
+            let savedID = window.localStorage.getItem("id")
+            todos = savedTasks
+            if(todos.length === 0 ){
+                ID = 0
+            }else{
+                ID = parseInt(savedID)
+            }
         }else{
-        
-            ID = parseInt(savedID)
+            return
         }
+        
+        
         
     }
 
