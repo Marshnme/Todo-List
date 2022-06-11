@@ -1,3 +1,5 @@
+import {manageProjects} from "./projects"
+
 let todos = []
 let ID = 0
 function manageTodos(){
@@ -8,7 +10,7 @@ function manageTodos(){
         }
         this.id = ID
         todos = [...todos,this]
-        console.log(todos)
+        // console.log(todos)
         ID++
         saveTasksInLocalStorage()
         
@@ -56,12 +58,12 @@ function manageTodos(){
             
             taskItem.classList.add(`todo`,`todo-${todo.id}`)
             if(todo.complete === true || todo.complete === "true"){
-                console.log("IM COMPLETE")
+                // console.log("IM COMPLETE")
                 taskItem.classList.add("task-completed-background")
                 taskDetails.classList.add("task-completed")
                 // taskDueBy.classList.toggle("task-completed")
             }else{
-                console.log("i am not completed")
+                // console.log("i am not completed")
                 taskItem.classList.remove("task-completed-background")
                 taskDetails.classList.remove("task-completed")
             }
@@ -118,12 +120,12 @@ function manageTodos(){
             return
         }else{
             let parentId = e.target.parentElement.classList[1].split("")
-            console.log(parentId)
+            // console.log(parentId)
             let IdLastChar = parentId.length-1
             
             let updatedTodos = todos.filter((todo) => {
-                console.log(parentId[IdLastChar])
-            console.log(todo.id)
+            //     console.log(parentId[IdLastChar])
+            // console.log(todo.id)
                if( todo.id != parentId[IdLastChar]){
                    return todo
                }
@@ -146,8 +148,8 @@ function manageTodos(){
         complete
 
     let {addTodo} = manageTodos();
-
-    return {title,desc,dueBy,priority,complete,addTodo}
+    let {addTodoToProject} = manageProjects()
+    return {title,desc,dueBy,priority,complete,addTodo,addTodoToProject}
 }
 
 export {Todo, manageTodos,todos,}

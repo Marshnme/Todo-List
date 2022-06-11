@@ -14,7 +14,7 @@ const projectsDisplay = () => {
   
     console.log(addIcon)
     let updateFormIcon = () => {
-        console.log("workssss")
+        // console.log("workssss")
         addProjectForm.classList.toggle("project-form-hidden")
     }
 
@@ -25,10 +25,9 @@ const projectsDisplay = () => {
     let projectContainer = document.createElement("div")
     projectContainer.classList.add("project-container")
 
-    let projectTitle = document.createElement("p")
-    projectTitle.textContent = "WOOORK"
+    // let projectTitle = document.createElement("p")
 
-    projectContainer.appendChild(projectTitle)
+    // projectContainer.appendChild(projectTitle)
     contentDiv.appendChild(projectContainer)
 
     refreshProjectList()

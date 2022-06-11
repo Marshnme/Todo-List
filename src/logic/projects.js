@@ -1,3 +1,5 @@
+ import Todo from "./todos"
+ 
  let projects = []
  let projectID = 0
  function manageProjects(){
@@ -71,14 +73,21 @@
             projectDueBy.textContent=`${project.dueBy}`
             projectDelete.textContent="DELETE"
 
+            // add + under each project to trigger todoForm to add todo to project
+
+            let addTodoButton = document.createElement("p")
+            addTodoButton.textContent="+"
+
             projectItem.addEventListener("click",toggleComplete)
             projectDelete.addEventListener("click",deleteProject)
-    
+            addTodoButton.addEventListener("click",addTaskToProject)
+
             projectContainer.appendChild(projectItem)
             projectItem.appendChild(projectDetails)
             projectDetails.appendChild(projectTitle)
             projectDetails.appendChild(projectDueBy)
             projectItem.appendChild(projectDelete)
+            projectItem.appendChild(addTodoButton)
         })
         contentDiv.appendChild(projectContainer)
     }
@@ -110,10 +119,10 @@
         console.log(projects)
     }
 
-    // let addTaskToProject = function(){
-    //     // click on project 
-    //     // brings up todos
-    // }
+    let addTaskToProject = function(e){
+        let taskForm = document.querySelector(".add-task-form")
+        taskForm.classList.toggle("task-form-hidden")
+    }
 
     let deleteProject = function(e){
         e.stopPropagation()

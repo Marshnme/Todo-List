@@ -7,8 +7,6 @@ import addTaskForm from "./components/addTaskForm";
 import addProjectForm from "./components/addProjectForm"
 import "./index.css"
 
-let {refreshTaskList} = manageTodos()
-
 let body = document.querySelector("body")
 const contentDiv = document.createElement("div")
 contentDiv.classList.add("content")
@@ -16,30 +14,14 @@ body.appendChild(contentDiv)
 
 
 
-// let todoOne = Todo("Clean Room","I was gonna grab the broom","tomorrow",5,true)
-// todoOne.addTodo()
-
-// let todoTwo = Todo("code","I was gonna grab the computer","todaymorrow",1,false)
-// todoTwo.addTodo()
-
-// let todoThree = Todo("work","work","work",1,false)
-// todoThree.addTodo()
-
-// todo
-
-
     // single page app
-    // home screen will have inputs for adding todos and projects that will hold todos. Choose which project your todo goes into
-    // Factories to create todos and projects
-    // todos will have title,desc,duedate,priority.....etc
-    // Keep logic seperated and Dom related stuff seperate.
     // interface should be able to view all projects,view all todays in each project,expand a single todo to see/edit its details,and delete a todo.
     // checkout date-fns package 
-    // use local storage to keep the session of the user
+    
 
     
 
-
+// create session storage to stay on current tab on refresh?
     const renderDisplays = () =>{
         // maybe dont render form? 
         // render and remove form in same fashion as task/project displays?
@@ -60,7 +42,7 @@ body.appendChild(contentDiv)
     function renderTasks(){
         let navContainer = document.querySelector(".sidebar")
         let projectContainer = document.querySelector(".project-container")
-        console.log(contentDiv)
+        // console.log(contentDiv)
          // very bad logic,easy to break
         if(contentDiv.children[3].className !== "todo-container"){
             contentDiv.removeChild(navContainer)
@@ -69,7 +51,7 @@ body.appendChild(contentDiv)
         } 
         
         
-        console.log("tASK BE RENDER")
+        // console.log("tASK BE RENDER")
     
         let taskTab = document.querySelector(".nav-tasks")
         let projectTab= document.querySelector(".nav-projects")
@@ -80,14 +62,14 @@ body.appendChild(contentDiv)
     function renderProjects(){
         let navContainer = document.querySelector(".sidebar")
         let todoContainer = document.querySelector(".todo-container")
-        console.log(contentDiv)
+        // console.log(contentDiv)
         // very bad logic,easy to break
         if(contentDiv.children[3].className !== "project-container"){
             contentDiv.removeChild(navContainer)
             contentDiv.removeChild(todoContainer)
             projectsDisplay()
         } 
-        console.log("PROJECT BE RENDER")
+        // console.log("PROJECT BE RENDER")
         
         
         let taskTab = document.querySelector(".nav-tasks")

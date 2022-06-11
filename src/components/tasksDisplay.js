@@ -15,12 +15,12 @@ const tasksDisplay = () => {
     
     let addTaskForm = document.querySelector(".add-task-form")
     let addIcon = document.querySelector(".add-icon")
-    console.log(addIcon)
+    // console.log(addIcon)
     // on each render its reapplying event listneder so its toggling form off and on again.
     function toggleTaskForm(){
 
-        console.log("task toggle")
-        console.log(addTaskForm)
+        // console.log("task toggle")
+        // console.log(addTaskForm)
         addTaskForm.classList.toggle("task-form-hidden")
     }
 

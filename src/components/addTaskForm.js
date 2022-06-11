@@ -4,7 +4,7 @@ import tasksDisplay from "./tasksDisplay"
 import "./tasks.css"
 
 const addTaskForm = () => {
-console.log("work???")
+
     let {refreshTaskList} = manageTodos()
     const contentDiv = document.querySelector(".content")
 
@@ -69,12 +69,26 @@ console.log("work???")
     contentDiv.appendChild(taskForm)
 
     function createTask(e){
-        let task = Todo(`${titleInput.value}`,`${descInput.value}`,`${dueByInput.value}`,`${priorityInput.value}`,`${completeInput.checked}`);
-        task.addTodo(e)
-        refreshTaskList()
-        clearForm()
-
+        e.preventDefault()
+        
+        if(e.target.form.parentElement.children[3].className === "todo-container"){
+            console.log("TASKSUBMIT")
+            let task = Todo(`${titleInput.value}`,`${descInput.value}`,`${dueByInput.value}`,`${priorityInput.value}`,`${completeInput.checked}`);
+            task.addTodo(e)
+            refreshTaskList()
+            clearForm()
+            // maybe just grab contentDiv.className
+        }else if(e.target.form.parentElement.children[3].className === "project-container"){
+            e.preventDefault()
+            console.log("PROJECTSUBMIT")
+                // let task = Todo(`${titleInput.value}`,`${descInput.value}`,`${dueByInput.value}`,`${priorityInput.value}`,`${completeInput.checked}`);
+                // task.addTodoToProject(e)
+                // refreshProjectList()
+                // clearForm()
+        }
     }
+    
+
 
     function clearForm(){
         taskForm.classList.toggle("task-form-hidden")
@@ -84,7 +98,6 @@ console.log("work???")
         priorityInput.value = 1
         completeInput.checked = false
     }
-
     submitButton.addEventListener("click",createTask)
 }
 
