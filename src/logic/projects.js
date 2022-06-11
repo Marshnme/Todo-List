@@ -32,7 +32,7 @@
             let projectDelete = document.createElement("p")
             projectDelete.classList.add("delete-icon")
 
-            projectItem.classList.add(`project`,`project-`)
+            projectItem.classList.add(`project`,`project-${project.id}`)
 
             if(project.complete === true || project.complete === "true"){
                 console.log("IM COMPLETE")
@@ -48,7 +48,7 @@
             projectDueBy.textContent=`${project.dueBy}`
             projectDelete.textContent="DELETE"
 
-            // projectItem.addEventListener("click",toggleComplete)
+            projectItem.addEventListener("click",toggleComplete)
             // projectDelete.addEventListener("click",deleteProject)
     
             projectContainer.appendChild(projectItem)
@@ -60,11 +60,34 @@
         contentDiv.appendChild(projectContainer)
     }
 
-    let toggleComplete = function(){
-        this.classList.toggle('complete')
+    let toggleComplete = function(e){
+        e.stopPropagation()
+        console.log(e)
+
+        for(let i = 0; i<projects.length;i++){
+            let split = e.target.classList[1].split("")
+            let lastChar = split.length - 1
+
+            if(projects[i].id === parseInt(split[lastChar])){
+                if(projects[i].complete === "true" || projects[i].complete === true){
+                    
+                    e.target.classList.remove("project-completed-background")
+                    e.target.children[0].classList.remove('project-completed')
+                    projects[i].complete = false;
+                }else if(projects[i].complete === "false" || projects[i].complete === false){
+                    e.target.classList.add("project-completed-background")
+                    e.target.children[0].classList.add('project-completed')
+                    projects[i].complete = true;
+                }else{
+                    console.log("nowork")
+                }
+                // save to local storage
+            }
+        }
+        console.log(projects)
     }
 
-    // let addTodoProject = function(){
+    // let addTaskToProject = function(){
     //     // click on project 
     //     // brings up todos
     // }

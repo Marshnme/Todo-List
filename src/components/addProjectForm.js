@@ -68,12 +68,9 @@ const addProjectForm = () => {
     let {refreshProjectList} = manageProjects()
     function createProject(e){
         let newProject = Project(`${titleInput.value}`,`${descInput.value}`,`${dueByInput.value}`,`${priorityInput.value}`,`${completeInput.checked}`);
-        console.log("beforeadd")
         newProject.addProject(e)
-        console.log("afteradd")
         refreshProjectList()
         clearForm()
-
     }
 
     function clearForm(){
