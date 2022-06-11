@@ -41,30 +41,59 @@ body.appendChild(contentDiv)
 
     const renderDisplays = () =>{
         addTaskForm()
-        sideNav()
         
         tasksDisplay()
         
     }
     
     renderDisplays()
+
+    
+    
+    
+
+    
     function renderTasks(){
-        console.log("tASK BE RENDER")
-        
+        let navContainer = document.querySelector(".sidebar")
         let projectContainer = document.querySelector(".project-container")
-        contentDiv.removeChild(projectContainer)
-        tasksDisplay()
+        console.log(contentDiv)
+        if(contentDiv.children[2].className !== "todo-container"){
+            contentDiv.removeChild(navContainer)
+            contentDiv.removeChild(projectContainer)
+            tasksDisplay()
+        } 
+        
+        
+        console.log("tASK BE RENDER")
+    
+        let taskTab = document.querySelector(".nav-tasks")
+        let projectTab= document.querySelector(".nav-projects")
+        taskTab.addEventListener("click",renderTasks)
+        projectTab.addEventListener("click",renderProjects)
     }
+
     function renderProjects(){
+        let navContainer = document.querySelector(".sidebar")
         let todoContainer = document.querySelector(".todo-container")
+        console.log(contentDiv)
+        if(contentDiv.children[2].className !== "project-container"){
+            contentDiv.removeChild(navContainer)
+            contentDiv.removeChild(todoContainer)
+            projectsDisplay()
+        } 
+         
+        
+        
+        
         console.log("PROJECT BE RENDER")
-        contentDiv.removeChild(todoContainer)
-        projectsDisplay()
+        
+        
+        let taskTab = document.querySelector(".nav-tasks")
+        let projectTab= document.querySelector(".nav-projects")
+        taskTab.addEventListener("click",renderTasks)
+        projectTab.addEventListener("click",renderProjects)
     }
     let taskTab = document.querySelector(".nav-tasks")
-    let projectTab = document.querySelector(".nav-projects")
-
-console.log(taskTab,projectTab)
-
-    taskTab.addEventListener("click",renderTasks)
-    projectTab.addEventListener("click",renderProjects)
+    let projectTab= document.querySelector(".nav-projects")
+        taskTab.addEventListener("click",renderTasks)
+        projectTab.addEventListener("click",renderProjects)

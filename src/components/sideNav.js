@@ -2,8 +2,6 @@
 
 const sideNav = () => {
     const contentDiv = document.querySelector(".content")
-    let addTaskForm = document.querySelector(".add-task-form")
-    console.log(addTaskForm)
     
     const sideBar = document.createElement("div")
     sideBar.classList.add("sidebar")
@@ -22,10 +20,6 @@ const sideNav = () => {
     sideBar.appendChild(projectLink)
     sideBar.appendChild(addIcon)
     contentDiv.appendChild(sideBar)
-
-    addIcon.addEventListener("click",function() {
-        addTaskForm.classList.toggle("task-form-hidden")
-    })
 
 }
 

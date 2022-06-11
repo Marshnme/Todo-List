@@ -1,14 +1,24 @@
 import {manageProjects} from "../logic/projects"
-
+import sideNav from "./sideNav"
 const projectsDisplay = () => {
+
+
+    sideNav()
+    // let taskTab = document.querySelector(".nav-tasks")
+    //     let projectTab= document.querySelector(".nav-projects")
+    //     taskTab.addEventListener("click",renderTasks)
+    //     projectTab.addEventListener("click",renderProjects)
+
+
     let {refreshProjects} = manageProjects()
-    let removeIcon = document.querySelector(".add-icon")
-
+    let addIcon = document.querySelector(".add-icon")
+  
+    console.log(addIcon)
     let updateFormIcon = () => {
-
+        console.log("workssss")
     }
 
-    removeIcon.addEventListener("click",updateFormIcon)
+    // addIcon.addEventListener("click",updateFormIcon)
     
     const contentDiv = document.querySelector(".content")
 
@@ -21,7 +31,7 @@ const projectsDisplay = () => {
     projectContainer.appendChild(projectTitle)
     contentDiv.appendChild(projectContainer)
 
-    refreshProjects()
+    // refreshProjects()
 }
 
 export default projectsDisplay
