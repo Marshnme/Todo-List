@@ -2,12 +2,10 @@ import {manageProjects} from "../logic/projects"
 import sideNav from "./sideNav"
 const projectsDisplay = () => {
 
-
+    let addTaskForm = document.querySelector(".add-task-form")
+    addTaskForm.classList.add("task-form-hidden")
     sideNav()
-    // let taskTab = document.querySelector(".nav-tasks")
-    //     let projectTab= document.querySelector(".nav-projects")
-    //     taskTab.addEventListener("click",renderTasks)
-    //     projectTab.addEventListener("click",renderProjects)
+    
 
 
     let {refreshProjects} = manageProjects()
@@ -18,7 +16,7 @@ const projectsDisplay = () => {
         console.log("workssss")
     }
 
-    // addIcon.addEventListener("click",updateFormIcon)
+    addIcon.addEventListener("click",updateFormIcon)
     
     const contentDiv = document.querySelector(".content")
 

@@ -57,6 +57,7 @@ body.appendChild(contentDiv)
         let navContainer = document.querySelector(".sidebar")
         let projectContainer = document.querySelector(".project-container")
         console.log(contentDiv)
+         // very bad logic,easy to break
         if(contentDiv.children[2].className !== "todo-container"){
             contentDiv.removeChild(navContainer)
             contentDiv.removeChild(projectContainer)
@@ -76,15 +77,12 @@ body.appendChild(contentDiv)
         let navContainer = document.querySelector(".sidebar")
         let todoContainer = document.querySelector(".todo-container")
         console.log(contentDiv)
+        // very bad logic,easy to break
         if(contentDiv.children[2].className !== "project-container"){
             contentDiv.removeChild(navContainer)
             contentDiv.removeChild(todoContainer)
             projectsDisplay()
         } 
-         
-        
-        
-        
         console.log("PROJECT BE RENDER")
         
         
@@ -93,6 +91,7 @@ body.appendChild(contentDiv)
         taskTab.addEventListener("click",renderTasks)
         projectTab.addEventListener("click",renderProjects)
     }
+    
     let taskTab = document.querySelector(".nav-tasks")
     let projectTab= document.querySelector(".nav-projects")
         taskTab.addEventListener("click",renderTasks)

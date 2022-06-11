@@ -6,10 +6,7 @@ import "./tasks.css"
 const tasksDisplay = () => {
     
     sideNav()
-    // let taskTab = document.querySelector(".nav-tasks")
-    //     let projectTab= document.querySelector(".nav-projects")
-    //     taskTab.addEventListener("click",renderTasks)
-    //     projectTab.addEventListener("click",renderProjects)
+
     
     let {refreshTaskList} = manageTodos()
     
