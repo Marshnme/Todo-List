@@ -49,7 +49,7 @@
             projectDelete.textContent="DELETE"
 
             projectItem.addEventListener("click",toggleComplete)
-            // projectDelete.addEventListener("click",deleteProject)
+            projectDelete.addEventListener("click",deleteProject)
     
             projectContainer.appendChild(projectItem)
             projectItem.appendChild(projectDetails)
@@ -92,14 +92,23 @@
     //     // brings up todos
     // }
 
-    let deleteProject = function(){
+    let deleteProject = function(e){
+        e.stopPropagation()
         if(projects.length === 0){
             return
         }else{
-            let updatedProjects = projects.filter((project) => {
-                // project.id === e.target.id
+            let parentId = e.target.parentElement.classList[1].split("")
+            console.log(parentId)
+            let IdLastChar = parentId.length-1
+
+            let updatedProjects = projects.filter(project => {
+                if( project.id != parentId[IdLastChar]){
+                    return project
+                }
             })
-            // projects = updatedProjects;
+            projects = updatedProjects;
+            // save to local
+            refreshProjectList()
         }
     }
     return {addProject,refreshProjectList,toggleComplete,deleteProject}
