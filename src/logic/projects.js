@@ -1,10 +1,16 @@
  let projects = []
-
+ let projectID = 0
  function manageProjects(){
 
-    let addProject = function(){
+    let addProject = function(e){
+        if(e){
+            e.preventDefault()
+        }
+        this.id = projectID
         projects = [...projects, this]
         console.log(projects)
+
+        projectID++
     }
 
     let refreshProjectList = function(){
@@ -75,6 +81,8 @@
     }
     return {addProject,refreshProjectList,toggleComplete,deleteProject}
  }
+
+ 
  function Project(title,desc,dueBy,priority,complete){
     title
     desc

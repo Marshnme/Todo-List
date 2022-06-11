@@ -1,3 +1,4 @@
+import { manageProjects,Project } from "../logic/projects"
 import "./projects.css"
 
 const addProjectForm = () => {
@@ -63,10 +64,14 @@ const addProjectForm = () => {
     projectForm.appendChild(submitButton)
     contentDiv.appendChild(projectForm)
 
-    function createproject(e){
-        let project = Project(`${titleInput.value}`,`${descInput.value}`,`${dueByInput.value}`,`${priorityInput.value}`,`${completeInput.checked}`);
-        project.addProject(e)
-        refreshprojectList()
+
+    let {refreshProjectList} = manageProjects()
+    function createProject(e){
+        let newProject = Project(`${titleInput.value}`,`${descInput.value}`,`${dueByInput.value}`,`${priorityInput.value}`,`${completeInput.checked}`);
+        console.log("beforeadd")
+        newProject.addProject(e)
+        console.log("afteradd")
+        refreshProjectList()
         clearForm()
 
     }
@@ -80,7 +85,7 @@ const addProjectForm = () => {
         completeInput.checked = false
     }
 
-    submitButton.addEventListener("click",createproject)
+    submitButton.addEventListener("click",createProject)
 }
 
 export default addProjectForm

@@ -14,3 +14,13 @@
 .project-form-hidden{
     display:none;
 }
+
+.project-completed{
+    text-decoration: line-through;
+    color:black;
+    background-color: grey;
+}
+
+.project-completed-background{
+    background-color: grey;
+}

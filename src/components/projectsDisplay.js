@@ -9,7 +9,7 @@ const projectsDisplay = () => {
     let addProjectForm = document.querySelector(".add-project-form")
 
 
-    let {refreshProjects} = manageProjects()
+    let {refreshProjectList} = manageProjects()
     let addIcon = document.querySelector(".add-icon")
   
     console.log(addIcon)
@@ -31,7 +31,7 @@ const projectsDisplay = () => {
     projectContainer.appendChild(projectTitle)
     contentDiv.appendChild(projectContainer)
 
-    // refreshProjects()
+    refreshProjectList()
 }
 
 export default projectsDisplay
