@@ -11,9 +11,32 @@
         console.log(projects)
 
         projectID++
+        saveProjectsInLocalStorage()
+    }
+
+    let saveProjectsInLocalStorage = function(){
+        window.localStorage.setItem("projects",JSON.stringify(projects))
+        window.localStorage.setItem("id",projectID)
+    }
+
+    let getProjectsFromLocalStorage = function(){
+        let savedProjects = JSON.parse(window.localStorage.getItem("projects"))
+
+        if(savedProjects != null){
+            let savedID = window.localStorage.getItem("id")
+            projects = savedProjects
+            if(projects.length === 0 ){
+                projectID = 0
+            }else{
+                projectID = parseInt(savedID)
+            }
+        }else{
+            return
+        }
     }
 
     let refreshProjectList = function(){
+        getProjectsFromLocalStorage()
         if(!projects){
             return
         }
@@ -81,7 +104,7 @@
                 }else{
                     console.log("nowork")
                 }
-                // save to local storage
+                saveProjectsInLocalStorage()
             }
         }
         console.log(projects)
@@ -107,7 +130,7 @@
                 }
             })
             projects = updatedProjects;
-            // save to local
+            saveProjectsInLocalStorage()
             refreshProjectList()
         }
     }

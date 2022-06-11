@@ -32,9 +32,6 @@ function manageTodos(){
         }else{
             return
         }
-        
-        
-        
     }
 
     let refreshTaskList = function(){
