@@ -4,6 +4,9 @@ import sideNav from "./sideNav"
 import "./tasks.css"
 
 const tasksDisplay = () => {
+    // closes projectForm if left open on swap
+    let addProjectForm = document.querySelector(".add-project-form")
+    addProjectForm.classList.add("project-form-hidden")
     
     sideNav()
 

@@ -2,10 +2,11 @@ import {manageProjects} from "../logic/projects"
 import sideNav from "./sideNav"
 const projectsDisplay = () => {
 
+    // closes taskForm if left open on swap
     let addTaskForm = document.querySelector(".add-task-form")
     addTaskForm.classList.add("task-form-hidden")
     sideNav()
-    
+    let addProjectForm = document.querySelector(".add-project-form")
 
 
     let {refreshProjects} = manageProjects()
@@ -14,6 +15,7 @@ const projectsDisplay = () => {
     console.log(addIcon)
     let updateFormIcon = () => {
         console.log("workssss")
+        addProjectForm.classList.toggle("project-form-hidden")
     }
 
     addIcon.addEventListener("click",updateFormIcon)

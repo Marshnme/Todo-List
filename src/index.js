@@ -4,6 +4,7 @@ import Projects from "./logic/projects";
 import tasksDisplay from "./components/tasksDisplay"
 import projectsDisplay from "./components/projectsDisplay";
 import addTaskForm from "./components/addTaskForm";
+import addProjectForm from "./components/addProjectForm"
 import "./index.css"
 
 let {refreshTaskList} = manageTodos()
@@ -40,7 +41,10 @@ body.appendChild(contentDiv)
 
 
     const renderDisplays = () =>{
+        // maybe dont render form? 
+        // render and remove form in same fashion as task/project displays?
         addTaskForm()
+        addProjectForm()
         
         tasksDisplay()
         
@@ -58,7 +62,7 @@ body.appendChild(contentDiv)
         let projectContainer = document.querySelector(".project-container")
         console.log(contentDiv)
          // very bad logic,easy to break
-        if(contentDiv.children[2].className !== "todo-container"){
+        if(contentDiv.children[3].className !== "todo-container"){
             contentDiv.removeChild(navContainer)
             contentDiv.removeChild(projectContainer)
             tasksDisplay()
@@ -78,7 +82,7 @@ body.appendChild(contentDiv)
         let todoContainer = document.querySelector(".todo-container")
         console.log(contentDiv)
         // very bad logic,easy to break
-        if(contentDiv.children[2].className !== "project-container"){
+        if(contentDiv.children[3].className !== "project-container"){
             contentDiv.removeChild(navContainer)
             contentDiv.removeChild(todoContainer)
             projectsDisplay()
@@ -91,7 +95,7 @@ body.appendChild(contentDiv)
         taskTab.addEventListener("click",renderTasks)
         projectTab.addEventListener("click",renderProjects)
     }
-    
+
     let taskTab = document.querySelector(".nav-tasks")
     let projectTab= document.querySelector(".nav-projects")
         taskTab.addEventListener("click",renderTasks)
