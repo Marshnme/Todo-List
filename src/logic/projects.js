@@ -21,6 +21,7 @@
     let saveProjectsInLocalStorage = function(){
         window.localStorage.setItem("projects",JSON.stringify(projects))
         window.localStorage.setItem("id",projectID)
+        window.localStorage.setItem("taskID",taskID)
     }
 
     let getProjectsFromLocalStorage = function(){
@@ -29,10 +30,14 @@
         if(savedProjects != null){
             let savedID = window.localStorage.getItem("id")
             projects = savedProjects
+            let savedTaskID= window.localStorage.getItem("taskID")
             if(projects.length === 0 ){
                 projectID = 0
+                taskID = 0
             }else{
+                
                 projectID = parseInt(savedID)
+                taskID = parseInt(savedTaskID)
             }
         }else{
             return
@@ -80,6 +85,8 @@
             let addTodoButton = document.createElement("p")
             addTodoButton.textContent="+"
 
+
+
             projectItem.addEventListener("click",toggleComplete)
             projectDelete.addEventListener("click",deleteProject)
             addTodoButton.addEventListener("click",toggleTaskForm)
@@ -90,6 +97,20 @@
             projectDetails.appendChild(projectDueBy)
             projectItem.appendChild(addTodoButton)
             projectItem.appendChild(projectDelete)
+
+            if(project.tasks.length > 0){
+                project.tasks.map(task => {
+                    let todoDetails = document.createElement("div")
+                    let todoTitle = document.createElement("p")
+                    todoTitle.textContent = `${task.title}`
+                    let todoDueby = document.createElement("p")
+                    todoDueby.textContent = `${task.dueBy}`
+
+                    todoDetails.appendChild(todoTitle)
+                    todoDetails.appendChild(todoDueby)
+                    projectItem.appendChild(todoDetails)
+                })
+            }
         })
         contentDiv.appendChild(projectContainer)
     }
@@ -132,14 +153,16 @@
     // need to grab currently clicked project to add todo to 
     // try to use project.addtodotoproject
     let addTodoToProject = function(e){
-        // console.log("addTodoToproject",this)
-        // console.log(currentProj)
+        console.log(taskID)
         this.id = taskID
         let split = currentProj.classList[1].split("")
         let currentProgID = split.length - 1
+        taskID++
+        console.log("addTodo",this.id)
+        console.log("addtodoC",currentProj)
         // console.log(split[currentProgID])
         for(let i=0; i<projects.length; i++){
-            if(split[currentProgID] == this.id){
+            if(split[currentProgID] == projects[i].id){
                 projects[i].tasks = [...projects[i].tasks, this]
                 console.log("project with task",projects[i])
             }
@@ -176,7 +199,7 @@
     dueBy
     priority
     complete
-    tasks 
+    tasks =[]
 
     let {addProject} = manageProjects()
 
