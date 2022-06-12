@@ -2,6 +2,7 @@
  
  let projects = []
  let projectID = 0
+ let taskID = 0
  let currentProj = null
  function manageProjects(){
 
@@ -121,7 +122,7 @@
     }
     
     let toggleTaskForm = function(e){
-               
+        console.log(e)
         currentProj = e.target.parentElement
         console.log(currentProj)
         let taskForm = document.querySelector(".add-task-form")
@@ -131,17 +132,19 @@
     // need to grab currently clicked project to add todo to 
     // try to use project.addtodotoproject
     let addTodoToProject = function(e){
-        console.log(this)
+        console.log("addTodoToproject",this)
         console.log(currentProj)
+        this.id = taskID
         let split = currentProj.classList[1].split("")
         let currentProgID = split.length - 1
         console.log(split[currentProgID])
         for(let i=0; i<projects.length; i++){
             if(split[currentProgID] == this.id){
                 console.log(projects[i])
+                projects[i] = {...projects[i],tasks:this}
+                console.log("project with task",projects[i])
             }
         }
-
     }
 
     let deleteProject = function(e){
