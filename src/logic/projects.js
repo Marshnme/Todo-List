@@ -2,6 +2,7 @@
  
  let projects = []
  let projectID = 0
+ let currentProj = null
  function manageProjects(){
 
     let addProject = function(e){
@@ -80,14 +81,14 @@
 
             projectItem.addEventListener("click",toggleComplete)
             projectDelete.addEventListener("click",deleteProject)
-            addTodoButton.addEventListener("click",addTaskToProject)
+            addTodoButton.addEventListener("click",toggleTaskForm)
 
             projectContainer.appendChild(projectItem)
             projectItem.appendChild(projectDetails)
             projectDetails.appendChild(projectTitle)
             projectDetails.appendChild(projectDueBy)
-            projectItem.appendChild(projectDelete)
             projectItem.appendChild(addTodoButton)
+            projectItem.appendChild(projectDelete)
         })
         contentDiv.appendChild(projectContainer)
     }
@@ -118,10 +119,29 @@
         }
         console.log(projects)
     }
-
-    let addTaskToProject = function(e){
+    
+    let toggleTaskForm = function(e){
+               
+        currentProj = e.target.parentElement
+        console.log(currentProj)
         let taskForm = document.querySelector(".add-task-form")
         taskForm.classList.toggle("task-form-hidden")
+        
+    }
+    // need to grab currently clicked project to add todo to 
+    // try to use project.addtodotoproject
+    let addTodoToProject = function(e){
+        console.log(this)
+        console.log(currentProj)
+        let split = currentProj.classList[1].split("")
+        let currentProgID = split.length - 1
+        console.log(split[currentProgID])
+        for(let i=0; i<projects.length; i++){
+            if(split[currentProgID] == this.id){
+                console.log(projects[i])
+            }
+        }
+
     }
 
     let deleteProject = function(e){
@@ -143,7 +163,7 @@
             refreshProjectList()
         }
     }
-    return {addProject,refreshProjectList,toggleComplete,deleteProject}
+    return {addProject,refreshProjectList,toggleComplete,deleteProject, addTodoToProject}
  }
 
  

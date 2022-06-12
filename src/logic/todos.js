@@ -46,7 +46,6 @@ function manageTodos(){
         todoContainer.replaceChildren()
        
         todos.map(todo => {
-            console.log(todo)
             let taskItem = document.createElement("div") 
             let taskDetails = document.createElement("div")
             taskDetails.classList.add("task-details")
@@ -138,6 +137,8 @@ function manageTodos(){
     return {addTodo,toggleComplete,deleteTodo,refreshTaskList}
 }
 
+// maybe add ID to here. Project todos dont have ids becuase ID is 
+// added when I add the task to todo array.
 // Todo Factory
  function Todo(title,desc,dueBy,priority,complete){
 

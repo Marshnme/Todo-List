@@ -1,6 +1,10 @@
 
 /* task Item(s) */
 
+.todo-container{
+    width:70%;
+    margin: 0 auto;
+}
 
 .task-completed{
     text-decoration: line-through;

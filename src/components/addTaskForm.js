@@ -2,10 +2,12 @@
 import { manageTodos,Todo } from "../logic/todos"
 import tasksDisplay from "./tasksDisplay"
 import "./tasks.css"
+import { manageProjects } from "../logic/projects"
 
 const addTaskForm = () => {
 
     let {refreshTaskList} = manageTodos()
+    let {refreshProjectList} = manageProjects()
     const contentDiv = document.querySelector(".content")
 
     // Creating form elements and adding content
@@ -81,10 +83,10 @@ const addTaskForm = () => {
         }else if(e.target.form.parentElement.children[3].className === "project-container"){
             e.preventDefault()
             console.log("PROJECTSUBMIT")
-                // let task = Todo(`${titleInput.value}`,`${descInput.value}`,`${dueByInput.value}`,`${priorityInput.value}`,`${completeInput.checked}`);
-                // task.addTodoToProject(e)
-                // refreshProjectList()
-                // clearForm()
+                let task = Todo(`${titleInput.value}`,`${descInput.value}`,`${dueByInput.value}`,`${priorityInput.value}`,`${completeInput.checked}`);
+                task.addTodoToProject(e)
+                refreshProjectList()
+                clearForm()
         }
     }
     

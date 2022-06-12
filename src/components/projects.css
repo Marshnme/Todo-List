@@ -15,6 +15,22 @@
     display:none;
 }
 
+
+.project-container{
+    width:70%;
+    margin:0 auto;
+}
+
+.project{
+    display:flex;
+    justify-content: space-between;
+    padding:.5rem 2rem;
+}
+
+.project p:first-of-type{
+    align-self:end;
+}
+
 .project-completed{
     text-decoration: line-through;
     color:black;
