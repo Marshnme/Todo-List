@@ -82,6 +82,7 @@ const addTaskForm = () => {
             // maybe just grab contentDiv.className
         }else if(e.target.form.parentElement.children[3].className === "project-container"){
             e.preventDefault()
+            console.log("e",e)
             console.log("PROJECTSUBMIT")
                 let task = Todo(`${titleInput.value}`,`${descInput.value}`,`${dueByInput.value}`,`${priorityInput.value}`,`${completeInput.checked}`);
                 task.addTodoToProject(e)

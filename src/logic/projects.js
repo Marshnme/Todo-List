@@ -132,19 +132,19 @@
     // need to grab currently clicked project to add todo to 
     // try to use project.addtodotoproject
     let addTodoToProject = function(e){
-        console.log("addTodoToproject",this)
-        console.log(currentProj)
+        // console.log("addTodoToproject",this)
+        // console.log(currentProj)
         this.id = taskID
         let split = currentProj.classList[1].split("")
         let currentProgID = split.length - 1
-        console.log(split[currentProgID])
+        // console.log(split[currentProgID])
         for(let i=0; i<projects.length; i++){
             if(split[currentProgID] == this.id){
-                console.log(projects[i])
-                projects[i] = {...projects[i],tasks:this}
+                projects[i].tasks = [...projects[i].tasks, this]
                 console.log("project with task",projects[i])
             }
         }
+        saveProjectsInLocalStorage()
     }
 
     let deleteProject = function(e){
@@ -170,16 +170,17 @@
  }
 
  
- function Project(title,desc,dueBy,priority,complete){
+ function Project(title,desc,dueBy,priority,complete,tasks){
     title
     desc
     dueBy
     priority
     complete
+    tasks 
 
     let {addProject} = manageProjects()
 
-    return { title,desc,dueBy,priority,complete,addProject}
+    return { title,desc,dueBy,priority,complete,tasks,addProject}
 }
 
 export {Project, manageProjects,projects}
