@@ -1,4 +1,7 @@
-
+*{
+  margin:0 ;
+  padding:0;
+}
 
 
 
@@ -22,13 +25,30 @@
 }
 
 .project{
-    display:flex;
-    justify-content: space-between;
+    display:grid;
+    justify-items:center;
+    grid-template-rows: .1fr 1fr .1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* grid-template-areas:'project-details ... delete'
+    'todo-details todo-details todo-details'; */
+    /* '... add-todo-icon ...'; */
+    grid-auto-rows: 1fr;
     padding:.5rem 2rem;
 }
 
-.project p:first-of-type{
+.project-details{
+    grid-area:1/1/2/1;
+    display:flex;
+    align-self: center;
+}
+
+.todo-details > *{
+    padding:1rem 0rem;
+}
+
+.project .add-todo-icon{
     align-self:end;
+    grid-area: 3/2/4/3;
 }
 
 .project-completed{
@@ -39,4 +59,14 @@
 
 .project-completed-background{
     background-color: grey;
+}
+
+.todo-details{
+    grid-area: 2/1/span 1/span 3;
+    /* align-self: center; */
+}
+
+
+.delete-icon{
+    grid-area: 1/3/2/4;
 }

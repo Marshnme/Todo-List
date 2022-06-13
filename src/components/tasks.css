@@ -1,9 +1,19 @@
 
+
+/* sidebar */
+
+.sidebar{
+    padding:2rem 0rem;
+}
 /* task Item(s) */
 
 .todo-container{
     width:70%;
     margin: 0 auto;
+}
+
+.todo-container > *{
+    padding:1rem 0rem;
 }
 
 .task-completed{

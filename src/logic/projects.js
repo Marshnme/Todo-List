@@ -83,6 +83,7 @@
             // add + under each project to trigger todoForm to add todo to project
 
             let addTodoButton = document.createElement("p")
+            addTodoButton.classList.add("add-todo-icon")
             addTodoButton.textContent="+"
 
 
@@ -97,17 +98,20 @@
             projectDetails.appendChild(projectDueBy)
             projectItem.appendChild(addTodoButton)
             projectItem.appendChild(projectDelete)
-
+            let todoDetails = document.createElement("div")
             if(project.tasks.length > 0){
                 project.tasks.map(task => {
-                    let todoDetails = document.createElement("div")
+                    let todoDetailsTry = document.createElement("div")
+                    
+                    todoDetails.classList.add("todo-details")
                     let todoTitle = document.createElement("p")
                     todoTitle.textContent = `${task.title}`
                     let todoDueby = document.createElement("p")
                     todoDueby.textContent = `${task.dueBy}`
 
-                    todoDetails.appendChild(todoTitle)
-                    todoDetails.appendChild(todoDueby)
+                    todoDetailsTry.appendChild(todoTitle)
+                    todoDetailsTry.appendChild(todoDueby)
+                    todoDetails.appendChild(todoDetailsTry)
                     projectItem.appendChild(todoDetails)
                 })
             }
