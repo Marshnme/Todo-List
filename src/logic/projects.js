@@ -108,9 +108,12 @@
                     todoTitle.textContent = `${task.title}`
                     let todoDueby = document.createElement("p")
                     todoDueby.textContent = `${task.dueBy}`
-
+                    let todoDelete = document.createElement("p")
+                    todoDelete.textContent = "DELETE"
+                    todoDelete.classList.add("todo-delete")
                     todoDetailsTry.appendChild(todoTitle)
                     todoDetailsTry.appendChild(todoDueby)
+                    todoDetailsTry.appendChild(todoDelete)
                     todoDetails.appendChild(todoDetailsTry)
                     projectItem.appendChild(todoDetails)
                 })

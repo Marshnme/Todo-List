@@ -42,8 +42,15 @@
     align-self: center;
 }
 
+.todo-details{
+    grid-area: 2/1/span 1/span 3;
+    display: flex;
+    flex-flow:row wrap;
+    /* flex-grow:0 */
+}
+
 .todo-details > *{
-    padding:1rem 0rem;
+    padding:1rem 1rem;
 }
 
 .project .add-todo-icon{
@@ -61,10 +68,6 @@
     background-color: grey;
 }
 
-.todo-details{
-    grid-area: 2/1/span 1/span 3;
-    /* align-self: center; */
-}
 
 
 .delete-icon{
