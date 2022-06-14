@@ -102,8 +102,8 @@
             if(project.tasks.length > 0){
                 project.tasks.map(task => {
                     let todoDetailsTry = document.createElement("div")
-                    
-                    todoDetails.classList.add("todo-details")
+                    todoDetailsTry.classList.add(`${task.id}`)
+                    todoDetails.classList.add(`todo-details`)
                     let todoTitle = document.createElement("p")
                     todoTitle.textContent = `${task.title}`
                     let todoDueby = document.createElement("p")
@@ -116,6 +116,8 @@
                     todoDetailsTry.appendChild(todoDelete)
                     todoDetails.appendChild(todoDetailsTry)
                     projectItem.appendChild(todoDetails)
+
+                    todoDelete.addEventListener('click',deleteTodo)
                 })
             }
         })
@@ -165,8 +167,7 @@
         let split = currentProj.classList[1].split("")
         let currentProgID = split.length - 1
         taskID++
-        console.log("addTodo",this.id)
-        console.log("addtodoC",currentProj)
+        
         // console.log(split[currentProgID])
         for(let i=0; i<projects.length; i++){
             if(split[currentProgID] == projects[i].id){
@@ -175,6 +176,35 @@
             }
         }
         saveProjectsInLocalStorage()
+    }
+
+    let deleteTodo = function(e) {
+        if(e){
+            let eClass = e.target.parentElement.classList[0].split("") 
+            let eID = eClass.length - 1
+            console.log(eClass[eID])
+            let projectContain = e.target.parentElement.parentElement.parentElement.classList[1].split("")
+            let projectContainID = projectContain.length - 1
+    
+            for(let i = 0; i<projects.length; i++){
+                if(projects[i].id == projectContain[projectContainID]){
+                    for(let j = 0; j<projects[i].tasks.length; j++){
+                        let newTasks = projects[i].tasks.filter(task => {
+                            return task.id != eClass[eID]
+                        })
+                        console.log(newTasks)
+                        projects[i].tasks = newTasks;
+                        saveProjectsInLocalStorage()
+                        refreshProjectList()
+                        }
+                        
+                        
+                    }
+
+                }
+            
+        }
+        
     }
 
     let deleteProject = function(e){
