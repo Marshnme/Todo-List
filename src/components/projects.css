@@ -53,6 +53,14 @@
     padding:1rem 1rem;
 }
 
+.todo-try-complete{
+    text-decoration: line-through;
+    color:black;
+    background-color: grey;
+}
+.todo-try-complete-background{
+    background-color: grey;
+}
 .project .add-todo-icon{
     align-self:end;
     grid-area: 3/2/4/3;
